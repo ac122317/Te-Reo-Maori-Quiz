@@ -2,7 +2,8 @@
 {
     internal class Program
     {
-        static void Main(string[] args) //Beginning of playing method.
+        static int points = 0;//Rather than creating an integer called points in the playing method I decided to create it inside the class Program, therefore I don't have to create parameters and reference points inside of the level methods.
+        static void Main(string[] args) //Beginning of main method.
         {
             playing();
 
@@ -10,6 +11,7 @@
             {
                 String playerName, selectedLevel;
                 bool valid = false;
+                
 
                 Console.WriteLine("\t\t\tWelcome to my Te Reo Maori Quiz.\nThis is a multiple choice quiz with three different levels, Easy, Medium and Hard. Each level will have 10 different questions and for each correct question you will be awarded 1 point. Good luck!");
 
@@ -50,14 +52,17 @@
 
         static void level1()
         {
+            points += 0;
             Console.WriteLine("\nWelcome to the Easy level.");
         }
         static void level2()
         {
+            points += 0;
             Console.WriteLine("\nWelcome to the Medium level.");
         }
         static void level3()
         {
+            points += 0;
             Console.WriteLine("\nWelcome to the Hard level.");
         }
     } //End of main method.
