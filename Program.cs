@@ -23,28 +23,31 @@
                 do
                 {
                     selectedLevel = Console.ReadLine().ToUpper(); //Asks user what level they would like to play and takes input from them to decide this.
-                    if (selectedLevel == "E")
+
+                    switch (selectedLevel) //This switch will check the input from the user and validate whether it is accepted, if accepted the user will be sent to the corresponding level method based on their selection.
                     {
-                        Console.Clear();
-                        level1();
-                        valid = true;
-                    }
-                    else if (selectedLevel == "M")
-                    {
-                        Console.Clear();
-                        level2();
-                        valid = true;
-                    }
-                    else if (selectedLevel == "H")
-                    {
-                        Console.Clear();
-                        level3();
-                        valid = true;
-                    }
-                    else
-                    {
-                        Console.Write("Please enter a valid option: ");
-                        valid = false;
+                        case "E":
+                            Console.Clear();
+                            level1();
+                            valid = true;
+                            break;
+
+                        case "M":
+                            Console.Clear();
+                            level2();
+                            valid = true;
+                            break;
+
+                        case "H":
+                            Console.Clear();
+                            level3();
+                            valid = true;
+                            break;
+
+                        default:
+                            Console.Write("Please enter a valid option: ");
+                            valid = false;
+                            break;
                     }
                 } while (valid != true); //This do while loop validates if the input entered by the user is accepted into the program, if it doesn't an error message will display and prompt the user to enter a valid option. The do loop ensures the input is proccessed at least once before checking if there is an error.
             }
@@ -53,17 +56,17 @@
         static void level1()
         {
             points += 0;
-            Console.WriteLine("\nWelcome to the Easy level.");
-        }
+            Console.WriteLine("Welcome to the Easy level.");
+        } //End of level1 method.
         static void level2()
         {
             points += 0;
-            Console.WriteLine("\nWelcome to the Medium level.");
+            Console.WriteLine("Welcome to the Medium level.");
         }
         static void level3()
         {
             points += 0;
-            Console.WriteLine("\nWelcome to the Hard level.");
+            Console.WriteLine("Welcome to the Hard level.");
         }
     } //End of main method.
 }
