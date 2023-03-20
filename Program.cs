@@ -12,7 +12,7 @@
                 String playerName, selectedLevel;
                 bool valid = false;
                 bool playerNameCheck = true;
-                Console.WriteLine("\t\t\tWelcome to my Te Reo Maori Quiz.\nThis is a multiple choice quiz with three different levels, Easy, Medium and Hard. Each level will have 10 different questions and for each correct question you will be awarded 1 point. Good luck!");
+                Console.WriteLine("\t\t\tWelcome to my Te Reo Maori Quiz.\nThis is a multiple choice quiz with three different levels, Easy, Medium and Hard. Each level will have 5 different questions and for each correct question you will be awarded 1 point. Good luck!");
 
                 Console.Write("\nPlease enter your name to begin: "); //I am welcoming the user to the quiz and asking for their name.
 
@@ -68,9 +68,27 @@
 
         static void level1()
         {
+            String answer1;
+            string[] easyQuestions = {"\nQuestion 1: What is the Maori word for White? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Whero\n b) Ma\n c) Kikorangi\n d) Kowhai\n\nEnter answer below: "};
+            string[] easyAnswers = {"b"};
             points += 0;
             Console.WriteLine("Welcome to the Easy level.");
             Console.WriteLine("Your points are currently: " +points);
+
+            Console.WriteLine(easyQuestions[0]);
+            easyAnswers[0] = Console.ReadLine().ToLower();
+
+            switch (easyAnswers[0])
+            {
+                case "b":
+                    points += 1;
+                    Console.WriteLine("Correct! Your points are now: " + points);
+                    break;
+
+                default:
+                    Console.WriteLine("Incorrect. Your points are still: " +points);
+                    break;
+            }
         } //End of level1 method.
         static void level2()
         {
