@@ -81,94 +81,29 @@ namespace Te_Reo_Maori_Quiz
             //Creating an array for easy questions.
             string[] easyQuestions = {"\nQuestion 1: What is the Maori word for white? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Whero\n b) Ma\n c) Kikorangi\n d) Kowhai\n\nEnter answer below: "
                     ,
-                "\nQuestion 2: What is the Maori word for hello? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Ka kite\n b) Whanau\n c) Kia ora\n d) Po marie\n\nEnter answer below: "
+                "Question 2: What is the Maori word for hello? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Ka kite\n b) Whanau\n c) Kia ora\n d) Po marie\n\nEnter answer below: "
                     ,
-                "\nQuestion 3: What is the Maori word for family? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Whanau\n b) Kia pai\n c) Awa\n d) Tena koe\n\nEnter answer below: "
+                "Question 3: What is the Maori word for family? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Whanau\n b) Kia pai\n c) Awa\n d) Tena koe\n\nEnter answer below: "
                     ,
-                "\nQuestion 4: What is the Maori name for New Zealand? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Aoraki\n b) Aotearoa\n c) Manukau\n d) Takanini\n\nEnter answer below: "
+                "Question 4: What is the Maori name for New Zealand? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Aoraki\n b) Aotearoa\n c) Manukau\n d) Takanini\n\nEnter answer below: "
                     ,
-                "\nQuestion 5: What is the Maori word for food? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Whenua\n b) Waka\n c) Tane\n d) Kai\n\nEnter answer below: "};
+                "Question 5: What is the Maori word for food? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Whenua\n b) Waka\n c) Tane\n d) Kai\n\nEnter answer below: "};
 
             //Creating an arrary for easy answers.
             string[] easyAnswers = { "b", "c", "a", "b", "d" };
 
             //Displaying the questions and taking answers, checking the user's input and calculating points after each question.
-
-            //Easy question 1.
-            Console.WriteLine(easyQuestions[0]);
-            easyAnswers[0] = Console.ReadLine().ToLower();
-            switch (easyAnswers[0])
+            for (int i = 0; i < easyQuestions.Length; i++)
             {
-                case "b":
-                    points += 1;
-                    Console.WriteLine("Correct! Your points are: " + points);
-                    break;
-
-                default:
-                    Console.WriteLine("Incorrect. Your points are: " + points);
-                    break;
-            }
-
-            //Easy question 2.
-            Console.WriteLine(easyQuestions[1]);
-            easyAnswers[1] = Console.ReadLine().ToLower();
-            switch (easyAnswers[1])
-            {
-                case "c":
-                    points += 1;
-                    Console.WriteLine("Correct! Your points are: " + points);
-                    break;
-
-                default:
-                    Console.WriteLine("Incorrect. Your points are: " + points);
-                    break;
-            }
-
-            //Easy question 3.
-            Console.WriteLine(easyQuestions[2]);
-            easyAnswers[2] = Console.ReadLine().ToLower();
-            switch (easyAnswers[2])
-            {
-                case "a":
-                    points += 1;
-                    Console.WriteLine("Correct! Your points are: " + points);
-                    break;
-
-                default:
-                    Console.WriteLine("Incorrect. Your points are: " + points);
-                    break;
-            }
-
-            //Easy question 4.
-            Console.WriteLine(easyQuestions[3]);
-            easyAnswers[3] = Console.ReadLine().ToLower();
-            switch (easyAnswers[3])
-            {
-                case "b":
-                    points += 1;
-                    Console.WriteLine("Correct! Your points are: " + points);
-                    break;
-
-                default:
-                    Console.WriteLine("Incorrect. Your points are: " + points);
-                    break;
-            }
-
-            //Easy question 5.
-            Console.WriteLine(easyQuestions[4]);
-            easyAnswers[4] = Console.ReadLine().ToLower();
-            switch (easyAnswers[4])
-            {
-                case "d":
-                    points += 1;
-                    Console.WriteLine("Correct! Your points are: " + points);
-                    break;
-
-                default:
-                    Console.WriteLine("Incorrect. Your points are: " + points);
-                    break;
+                Console.WriteLine(easyQuestions[i]);
+                easyAnswers[i] = Console.ReadLine().ToLower();
+                Level2();
+                Console.Write("\nPress any key to continue:");
+                Console.ReadKey();
+                Console.Clear();
             }
         }//End of level1 method.
+
 
         static void Level2()
         {
