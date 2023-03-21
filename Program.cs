@@ -92,33 +92,27 @@ namespace Te_Reo_Maori_Quiz
             //Creating an arrary for easy answers.
             string[] easyAnswers = { "b", "c", "a", "b", "d" };
 
-            //Using a for loop to display each question to the user and take their answer.
-            
+            //Using a for loop to display each question to the user and taking their answer, then checking if their answer is correct and determining their points accordingly.
             for (int i = 0; i < easyQuestions.Length; i++)
             {
                 Console.WriteLine(easyQuestions[i]);
                 String questionAnswer = Console.ReadLine().ToLower();
 
-                if (string.IsNullOrEmpty(questionAnswer))
-                {
-                    Console.WriteLine("Invalid option, please try again:");
-                }
-                else if (questionAnswer == easyAnswers[i])
+                if (questionAnswer == easyAnswers[i])
                 {
                     points += 1;
                     Console.WriteLine("\nCorrect! Your points are currently: " + points);
                 }
-                else if (questionAnswer != easyAnswers[i])
+                else
                 {
                     Console.WriteLine("\nIncorrect. Your points are currently: " + points);
                 }
-                
                 Console.Write("\nPress any key to continue:");
                 Console.ReadKey();
                 Console.Clear();
             }
 
-            Console.WriteLine("Congratulations! You have successfully finished the easy level with " + points + " /5 points. \n\nPlease press r to restart the quiz, or press any other key to exit the quiz: ");
+            Console.WriteLine("Congratulations! You have successfully finished the easy level with " + points + "/5 points. \n\nPlease press r to restart the quiz, or press any other key to exit the quiz: ");
             String restartQuiz = Console.ReadLine().ToLower();
             if (restartQuiz.Contains("r"))
             {
