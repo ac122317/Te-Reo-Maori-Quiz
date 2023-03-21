@@ -7,7 +7,7 @@ namespace Te_Reo_Maori_Quiz
     internal class Program
     {
         static int points = 0;//Rather than creating an integer called points in the playing method I decided to create it inside the class Program, therefore I don't have to create parameters and reference points inside of the level methods.
-        static void Main(string[] args) //Beginning of main method.
+        static void Main() //Beginning of main method.
         {
             playing();
 
@@ -45,19 +45,19 @@ namespace Te_Reo_Maori_Quiz
                     {
                         case "E":
                             Console.Clear();
-                            Level1();
+                            level1();
                             valid = true;
                             break;
 
                         case "M":
                             Console.Clear();
-                            Level2();
+                            level2();
                             valid = true;
                             break;
 
                         case "H":
                             Console.Clear();
-                            Level3();
+                            level3();
                             valid = true;
                             break;
 
@@ -70,7 +70,7 @@ namespace Te_Reo_Maori_Quiz
             }
         } //End of playing method.
 
-        static void Level1()
+        static void level1()
         {
             points += 0;
 
@@ -92,28 +92,53 @@ namespace Te_Reo_Maori_Quiz
             //Creating an arrary for easy answers.
             string[] easyAnswers = { "b", "c", "a", "b", "d" };
 
-            //Displaying the questions and taking answers, checking the user's input and calculating points after each question.
+            //Using a for loop to display each question to the user and take their answer.
+            
             for (int i = 0; i < easyQuestions.Length; i++)
             {
                 Console.WriteLine(easyQuestions[i]);
-                easyAnswers[i] = Console.ReadLine().ToLower();
-                Level2();
+                String questionAnswer = Console.ReadLine().ToLower();
+
+                if (string.IsNullOrEmpty(questionAnswer))
+                {
+                    Console.WriteLine("Invalid option, please try again:");
+                }
+                else if (questionAnswer == easyAnswers[i])
+                {
+                    points += 1;
+                    Console.WriteLine("\nCorrect! Your points are currently: " + points);
+                }
+                else if (questionAnswer != easyAnswers[i])
+                {
+                    Console.WriteLine("\nIncorrect. Your points are currently: " + points);
+                }
+                
                 Console.Write("\nPress any key to continue:");
                 Console.ReadKey();
                 Console.Clear();
             }
+
+            Console.WriteLine("Congratulations! You have successfully finished the easy level with " + points + " /5 points. \n\nPlease press r to restart the quiz, or press any other key to exit the quiz: ");
+            String restartQuiz = Console.ReadLine().ToLower();
+            if (restartQuiz.Contains("r"))
+            {
+                Console.Clear();
+                Main();
+            }
+            else
+            {
+                Console.WriteLine("Thank you for playing my Te Reo Maori Quiz!");
+            }
+
         }//End of level1 method.
 
-
-        static void Level2()
+        static void level2()
         {
-            points += 0;
             Console.WriteLine("Welcome to the Medium level.");
             Console.WriteLine("Your points are currently: " + points);
         } //End of level2 method.
-        static void Level3()
+        static void level3()
         {
-            points += 0;
             Console.WriteLine("Welcome to the Hard level.");
             Console.WriteLine("Your points are currently: " + points);
         } //End of level3 method.
