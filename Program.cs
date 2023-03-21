@@ -115,12 +115,17 @@ namespace Te_Reo_Maori_Quiz
                 Console.Clear();
             }
 
-            Console.WriteLine("Congratulations! You have successfully finished the easy level with " + points + "/5 points. \n\nPlease press r to restart the quiz from the beginning, m to go the medium level, h to go the hard level or press any other key to exit the quiz: ");
+            Console.WriteLine("Congratulations! You have successfully finished the easy level with " + points + "/5 points. \n\nPlease press r to restart the quiz from the beginning, e to restart the easy level, m to go the medium level, h to go the hard level or press any other key to exit the quiz: ");
             String endOfLevelChoice = Console.ReadLine().ToLower();
             if (endOfLevelChoice.Contains("r"))
             {
                 Console.Clear();
                 Main();
+            }
+            else if (endOfLevelChoice.Contains("e"))
+            {
+                Console.Clear();
+                Level1();
             }
             else if (endOfLevelChoice.Contains("m"))
             {
@@ -182,7 +187,7 @@ namespace Te_Reo_Maori_Quiz
                 Console.Clear();
             } //End of for loop.
 
-            Console.WriteLine("Congratulations! You have successfully finished the medium level with " + points + "/5 points. \n\nPlease press r to restart the quiz from the beginning, e to go to the easy level, h to go to the hard level, or press any other key to exit the quiz: ");
+            Console.WriteLine("Congratulations! You have successfully finished the medium level with " + points + "/5 points. \n\nPlease press r to restart the quiz from the beginning, e to go to the easy level, m to restart the medium level, h to go to the hard level, or press any other key to exit the quiz: ");
             String endOfLevelChoice = Console.ReadLine().ToLower();
             if (endOfLevelChoice.Contains("r"))
             {
@@ -193,6 +198,11 @@ namespace Te_Reo_Maori_Quiz
             {
                 Console.Clear();
                 Level1();
+            }
+            else if (endOfLevelChoice.Contains("m"))
+            {
+                Console.Clear();
+                Level2();
             }
             else if (endOfLevelChoice.Contains("h"))
             {
@@ -246,7 +256,7 @@ namespace Te_Reo_Maori_Quiz
                 Console.Clear();
             } //End of for loop.
 
-            Console.WriteLine("Congratulations! You have successfully finished the hard level with " + points + "/5 points. \n\nPlease press r to restart the quiz from the beginning, e to go to the easy level, m to go to the medium level, or press any other key to exit the quiz: ");
+            Console.WriteLine("Congratulations! You have successfully finished the hard level with " + points + "/5 points. \n\nPlease press r to restart the quiz from the beginning, e to go to the easy level, m to go to the medium level, h to restart the hard level, or press any other key to exit the quiz: ");
             String endOfLevelChoice = Console.ReadLine().ToLower();
             if (endOfLevelChoice.Contains("r"))
             {
@@ -262,6 +272,11 @@ namespace Te_Reo_Maori_Quiz
             {
                 Console.Clear();
                 Level2();
+            }
+            else if (endOfLevelChoice.Contains("h"))
+            {
+                Console.Clear();
+                Level3();
             }
             else
             {
