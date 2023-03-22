@@ -9,13 +9,13 @@ namespace Te_Reo_Maori_Quiz
         static int points = 0;//Rather than creating an integer called points in the playing method I decided to create it inside the class Program, therefore I don't have to create parameters and reference points inside of the level methods.
         static void Main() //Beginning of main method.
         {
-            points += 0;
+            points = 0;
             Playing();
 
             static void Playing() //Beginning of playing Method.
             {
-                points += 0;
-
+                points = 0;
+                
                 String playerName, selectedLevel;
                 bool valid = false;
                 bool playerNameCheck = true;
@@ -75,7 +75,7 @@ namespace Te_Reo_Maori_Quiz
 
         static void Level1()
         {
-            points += 0;
+            points = 0;
 
             //Welcoming the user to the level and displaying their starting points.
             Console.WriteLine("Welcome to the Easy level.");
@@ -96,23 +96,36 @@ namespace Te_Reo_Maori_Quiz
             string[] easyAnswers = { "b", "c", "a", "b", "d" };
 
             //Using a for loop to display each question to the user and taking their answer, then checking if their answer is correct and determining their points accordingly.
+            bool questionAnswerValid = true;
             for (int i = 0; i < easyQuestions.Length; i++)
             {
                 Console.WriteLine(easyQuestions[i]);
                 String questionAnswer = Console.ReadLine().ToLower();
+                do
+                {
+                    if (string.IsNullOrEmpty(questionAnswer))
+                    {
+                        Console.WriteLine("Please enter an answer:");
+                        questionAnswerValid = false;
+                    }
+                    else
+                    {
+                        questionAnswerValid = true;
+                    } 
+                } while (questionAnswerValid != false);
 
-                if (questionAnswer == easyAnswers[i])
-                {
-                    points += 1;
-                    Console.WriteLine("\nCorrect! Your points are currently: " + points);
-                }
-                else
-                {
-                    Console.WriteLine("\nIncorrect. Your points are currently: " + points);
-                }
-                Console.Write("\nPress any key to continue:");
-                Console.ReadKey();
-                Console.Clear();
+                    if (questionAnswer == easyAnswers[i])
+                    {
+                        points++;
+                        Console.WriteLine("\nCorrect! Your points are currently: " + points);
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nIncorrect. Your points are currently: " + points);
+                    }
+                    Console.Write("\nPress any key to continue:");
+                    Console.ReadKey();
+                    Console.Clear();
             }
 
             Console.WriteLine("Congratulations! You have successfully finished the easy level with " + points + "/5 points. \n\nPlease press r to restart the quiz from the beginning, e to restart the easy level, m to go the medium level, h to go the hard level or press any other key to exit the quiz: ");
@@ -146,7 +159,7 @@ namespace Te_Reo_Maori_Quiz
 
         static void Level2()
         {
-            points += 0;
+            points = 0;
 
             //Welcoming the user to the level and displaying their starting points.
             Console.WriteLine("Welcome to the Medium level.");
@@ -175,7 +188,7 @@ namespace Te_Reo_Maori_Quiz
 
                 if (questionAnswer == mediumAnswers[i])
                 {
-                    points += 1;
+                    points ++;
                     Console.WriteLine("\nCorrect! Your points are currently: " + points);
                 }
                 else
@@ -216,7 +229,7 @@ namespace Te_Reo_Maori_Quiz
         } //End of level2 method.
         static void Level3()
         {
-            points += 0;
+            points = 0;
 
             Console.WriteLine("Welcome to the Hard level.");
             Console.WriteLine("Your points are currently: " + points);
@@ -244,7 +257,7 @@ namespace Te_Reo_Maori_Quiz
 
                 if (questionAnswer == hardAnswers[i])
                 {
-                    points += 1;
+                    points ++;
                     Console.WriteLine("\nCorrect! Your points are currently: " + points);
                 }
                 else
