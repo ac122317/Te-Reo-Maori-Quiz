@@ -15,7 +15,7 @@ namespace Te_Reo_Maori_Quiz
             static void Playing() //Beginning of playing Method.
             {
                 points = 0;
-                
+
                 String playerName, selectedLevel;
                 bool valid = false;
                 bool playerNameCheck = true;
@@ -39,7 +39,7 @@ namespace Te_Reo_Maori_Quiz
                 } while (playerNameCheck != true); //Ensures the loop repeats if the playerNameCheck does not equal true.
 
                 Console.WriteLine("\nHello " + playerName + ", please choose your level: Easy, Medium or Hard (please type E for easy, M for Medium or H for Hard).");
-
+                Console.Write("\nPlease enter your choice here: ");
                 do
                 {
                     selectedLevel = Console.ReadLine().ToUpper(); //Asks user what level they would like to play and takes input from them to decide this.
@@ -92,41 +92,36 @@ namespace Te_Reo_Maori_Quiz
                     ,
                 "Question 5: What is the Maori word for food? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Whenua\n b) Waka\n c) Tane\n d) Kai\n\nEnter answer below: "};
 
-            //Creating an arrary for easy answers.
+            //Creating arrays for easy answers.
             string[] easyAnswers = { "b", "c", "a", "b", "d" };
-
+            string[] easyAnswersWBracket = { "b)", "c)", "a)", "b)", "d)" };
             //Using a for loop to display each question to the user and taking their answer, then checking if their answer is correct and determining their points accordingly.
-            bool questionAnswerValid = true;
+
             for (int i = 0; i < easyQuestions.Length; i++)
             {
                 Console.WriteLine(easyQuestions[i]);
                 String questionAnswer = Console.ReadLine().ToLower();
-                do
+                
+                while (string.IsNullOrEmpty(questionAnswer)) //Checks if the user doesn't enter an answer.
                 {
-                    if (string.IsNullOrEmpty(questionAnswer))
-                    {
-                        Console.WriteLine("Please enter an answer:");
-                        questionAnswerValid = false;
-                    }
-                    else
-                    {
-                        questionAnswerValid = true;
-                    } 
-                } while (questionAnswerValid != false);
+                    Console.Write("Please enter an answer: ");
+                    questionAnswer = Console.ReadLine().ToLower();
+                } //End of while loop.
 
-                    if (questionAnswer == easyAnswers[i])
-                    {
-                        points++;
-                        Console.WriteLine("\nCorrect! Your points are currently: " + points);
-                    }
-                    else
-                    {
-                        Console.WriteLine("\nIncorrect. Your points are currently: " + points);
-                    }
-                    Console.Write("\nPress any key to continue:");
-                    Console.ReadKey();
-                    Console.Clear();
-            }
+                if (questionAnswer == easyAnswers[i] || questionAnswer == easyAnswersWBracket[i])
+                {
+                    points++;
+                    Console.WriteLine("\nCorrect! Your points are currently: " + points);
+                }
+                else
+                {
+                    Console.WriteLine("\nIncorrect. Your points are currently: " + points);
+                }
+
+                Console.Write("\nPress any key to continue: ");
+                Console.ReadKey();
+                Console.Clear();
+            } //End of for loop.
 
             Console.WriteLine("Congratulations! You have successfully finished the easy level with " + points + "/5 points. \n\nPlease press r to restart the quiz from the beginning, e to restart the easy level, m to go the medium level, h to go the hard level or press any other key to exit the quiz: ");
             String endOfLevelChoice = Console.ReadLine().ToLower();
@@ -176,9 +171,10 @@ namespace Te_Reo_Maori_Quiz
                     ,
                 "Question 5: What is the Maori word for land? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Kaimoana\n b) Whenua\n c) Whare\n d) Tepu\n\nEnter answer below: "
             };
-            
-            //Creating an array for medium answers.
-            string[] mediumAnswers = {"c", "c", "a", "d", "b"};
+
+            //Creating arrays for medium answers.
+            string[] mediumAnswers = { "c", "c", "a", "d", "b" };
+            string[] mediumAnswersWBracket = { "c)", "c)", "a)", "d)", "b)" };
 
             //Using a for loop to display each question to the user and taking their answer, then checking if their answer is correct and determining their points accordingly.
             for (int i = 0; i < mediumQuestions.Length; i++)
@@ -186,16 +182,22 @@ namespace Te_Reo_Maori_Quiz
                 Console.WriteLine(mediumQuestions[i]);
                 String questionAnswer = Console.ReadLine().ToLower();
 
-                if (questionAnswer == mediumAnswers[i])
+                while (string.IsNullOrEmpty(questionAnswer)) //Checks if the user doesn't enter an answer.
                 {
-                    points ++;
+                    Console.Write("Please enter an answer: ");
+                    questionAnswer = Console.ReadLine().ToLower();
+                } //End of while loop.
+
+                if (questionAnswer == mediumAnswers[i] || questionAnswer == mediumAnswersWBracket[i])
+                {
+                    points++;
                     Console.WriteLine("\nCorrect! Your points are currently: " + points);
                 }
                 else
                 {
                     Console.WriteLine("\nIncorrect. Your points are currently: " + points);
                 }
-                Console.Write("\nPress any key to continue:");
+                Console.Write("\nPress any key to continue: ");
                 Console.ReadKey();
                 Console.Clear();
             } //End of for loop.
@@ -244,20 +246,26 @@ namespace Te_Reo_Maori_Quiz
                 "Question 4: What is the English word for katakata? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Happiness\n b) Laughter\n c) Dance\n d) Military\n\nEnter answer below: "
                     ,
                 "Question 5: What is the English word for rorohiko? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Headphones\n b) Door\n c) Pillar\n d) Computer\n\nEnter answer below: "
-            }; 
-            
-            //Creating an array for hard answers.
-            string[] hardAnswers = {"b","a","c","b","d"};
+            };
 
+            //Creating arrays for hard answers.
+            string[] hardAnswers = { "b", "a", "c", "b", "d" };
+            string[] hardAnswersWBracket = { "b)", "a)", "c)", "b)", "d)" };
             //Using a for loop to display each question to the user and taking their answer, then checking if their answer is correct and determining their points accordingly.
             for (int i = 0; i < hardQuestions.Length; i++)
             {
                 Console.WriteLine(hardQuestions[i]);
                 String questionAnswer = Console.ReadLine().ToLower();
 
-                if (questionAnswer == hardAnswers[i])
+                while (string.IsNullOrEmpty(questionAnswer)) //Checks if the user doesn't enter an answer.
                 {
-                    points ++;
+                    Console.Write("Please enter an answer: ");
+                    questionAnswer = Console.ReadLine().ToLower();
+                } //End of while loop.
+
+                if (questionAnswer == hardAnswers[i] || questionAnswer == hardAnswersWBracket[i])
+                {
+                    points++;
                     Console.WriteLine("\nCorrect! Your points are currently: " + points);
                 }
                 else
