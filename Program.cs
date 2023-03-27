@@ -6,7 +6,7 @@ namespace Te_Reo_Maori_Quiz
 {
     internal class Program
     {
-        static int points = 0;//Rather than creating an integer called points in the playing method I decided to create it inside the class Program, therefore I don't have to create parameters and reference points inside of the level methods.
+        static int points = 0;//Rather than creating an integer called points in the playing method I decided to create it inside the class Program (globalising it), therefore I don't have to create parameters and reference points inside of the level methods.
         static void Main() //Beginning of main method.
         {
             points = 0;
@@ -17,28 +17,21 @@ namespace Te_Reo_Maori_Quiz
                 points = 0;
 
                 String playerName, selectedLevel;
-                bool valid = false;
-                bool playerNameCheck = true;
+                bool valid;
+
                 Console.WriteLine("\t\t\tWelcome to my Te Reo Maori Quiz.\nThis is a multiple choice quiz with three different levels, Easy, Medium and Hard. Each level will have 5 different questions and for each correct question you will be awarded 1 point. Good luck!");
 
                 Console.Write("\nPlease enter your name to begin: "); //I am welcoming the user to the quiz and asking for their name.
 
-                do //Creating a do loop to ensure the name check is done at least once.
+                playerName = Console.ReadLine(); // I am now assigning their input to the name variable.
+                while (string.IsNullOrEmpty(playerName))
                 {
-                    playerName = Console.ReadLine(); // I am now assigning their input to the name variable.
+                    Console.Write("Please enter a name with at least 1 character: ");
+                    playerName = Console.ReadLine();
+                }
 
-                    if (string.IsNullOrEmpty(playerName)) //This if statement checks if the user doesn't input anything and just presses enter. If so, they will be prompted to enter a name with at least 1 character. If they follow the instructions the loop will be broken, otherwise it will loop until the condition is met.
-                    {
-                        Console.Write("Please enter a name with at least 1 character: ");
-                        playerNameCheck = false;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                } while (playerNameCheck != true); //Ensures the loop repeats if the playerNameCheck does not equal true.
+                Console.WriteLine("\nHello " + playerName + ", please choose your level: Easy (E), Medium (M) or Hard (H).");
 
-                Console.WriteLine("\nHello " + playerName + ", please choose your level: Easy, Medium or Hard (please type E for easy, M for Medium or H for Hard).");
                 Console.Write("\nPlease enter your choice here: ");
                 do
                 {
@@ -65,7 +58,7 @@ namespace Te_Reo_Maori_Quiz
                             break;
 
                         default:
-                            Console.Write("Please enter a valid option: ");
+                            Console.Write("Please enter a valid level: ");
                             valid = false;
                             break;
                     }
@@ -117,13 +110,13 @@ namespace Te_Reo_Maori_Quiz
                 {
                     Console.WriteLine("\nIncorrect. Your points are currently: " + points);
                 }
-
                 Console.Write("\nPress any key to continue: ");
                 Console.ReadKey();
                 Console.Clear();
             } //End of for loop.
 
-            Console.WriteLine("Congratulations! You have successfully finished the easy level with " + points + "/5 points. \n\nPlease press r to restart the quiz from the beginning, e to restart the easy level, m to go the medium level, h to go the hard level or press any other key to exit the quiz: ");
+            Console.WriteLine("Congratulations! You have successfully finished the medium level with " + points + "/5 points. \n\nPlease press r to restart the whole quiz, e to restart the easy level, m to go to the medium level, h to go to the hard level, or any other key to exit: ");
+
             String endOfLevelChoice = Console.ReadLine().ToLower();
             if (endOfLevelChoice.Contains("r"))
             {
@@ -202,7 +195,8 @@ namespace Te_Reo_Maori_Quiz
                 Console.Clear();
             } //End of for loop.
 
-            Console.WriteLine("Congratulations! You have successfully finished the medium level with " + points + "/5 points. \n\nPlease press r to restart the quiz from the beginning, e to go to the easy level, m to restart the medium level, h to go to the hard level, or press any other key to exit the quiz: ");
+            Console.WriteLine("Congratulations! You have successfully finished the medium level with " + points + "/5 points. \n\nPlease press r to restart the whole quiz, e to go to the easy level, m to restart the medium level, h to go to the hard level, or any other key to exit: "); 
+
             String endOfLevelChoice = Console.ReadLine().ToLower();
             if (endOfLevelChoice.Contains("r"))
             {
@@ -233,6 +227,7 @@ namespace Te_Reo_Maori_Quiz
         {
             points = 0;
 
+            //Welcoming the user to the level and displaying their starting points.
             Console.WriteLine("Welcome to the Hard level.");
             Console.WriteLine("Your points are currently: " + points);
 
@@ -277,7 +272,8 @@ namespace Te_Reo_Maori_Quiz
                 Console.Clear();
             } //End of for loop.
 
-            Console.WriteLine("Congratulations! You have successfully finished the hard level with " + points + "/5 points. \n\nPlease press r to restart the quiz from the beginning, e to go to the easy level, m to go to the medium level, h to restart the hard level, or press any other key to exit the quiz: ");
+            Console.WriteLine("Congratulations! You have successfully finished the medium level with " + points + "/5 points. \n\nPlease press r to restart the whole quiz, e to go to the easy level, m to go to the medium level, h to restart the hard level, or any other key to exit: ");
+
             String endOfLevelChoice = Console.ReadLine().ToLower();
             if (endOfLevelChoice.Contains("r"))
             {
