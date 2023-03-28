@@ -30,9 +30,9 @@ namespace Te_Reo_Maori_Quiz
                     playerName = Console.ReadLine();
                 }
 
-                Console.WriteLine("\nHello " + playerName + ", please choose your level: Easy (E), Medium (M) or Hard (H).");
-
+                Console.WriteLine("\nHello " + playerName + ", please choose your level: Easy (type E), Medium (type M) or Hard (type H).");
                 Console.Write("\nPlease enter your choice here: ");
+
                 do
                 {
                     selectedLevel = Console.ReadLine().ToUpper(); //Asks user what level they would like to play and takes input from them to decide this.
@@ -69,21 +69,20 @@ namespace Te_Reo_Maori_Quiz
         static void Level1()
         {
             points = 0;
-
+            
             //Welcoming the user to the level and displaying their starting points.
             Console.WriteLine("Welcome to the Easy level.");
-            Console.WriteLine("Your points are: " + points);
 
             //Creating an array for easy questions.
-            string[] easyQuestions = {"\nQuestion 1: What is the Maori word for white? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Whero\n b) Ma\n c) Kikorangi\n d) Kowhai\n\nEnter answer below: "
+            string[] easyQuestions = {"\nQuestion 1: What is the Maori word for white?\n\nPlease enter one of the options (by letter):\n a) Whero\n b) Ma\n c) Kikorangi\n d) Kowhai\n\nEnter answer below: "
                     ,
-                "Question 2: What is the Maori word for hello? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Ka kite\n b) Whanau\n c) Kia ora\n d) Po marie\n\nEnter answer below: "
+                "Question 2: What is the Maori word for hello?\n\nPlease enter one of the options (by letter):\n a) Ka kite\n b) Whanau\n c) Kia ora\n d) Po marie\n\nEnter answer below: "
                     ,
-                "Question 3: What is the Maori word for family? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Whanau\n b) Kia pai\n c) Awa\n d) Tena koe\n\nEnter answer below: "
+                "Question 3: What is the Maori word for family?\n\nPlease enter one of the options (by letter):\n a) Whanau\n b) Kia pai\n c) Awa\n d) Tena koe\n\nEnter answer below: "
                     ,
-                "Question 4: What is the Maori name for New Zealand? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Aoraki\n b) Aotearoa\n c) Manukau\n d) Takanini\n\nEnter answer below: "
+                "Question 4: What is the Maori name for New Zealand?\n\nPlease enter one of the options (by letter):\n a) Aoraki\n b) Aotearoa\n c) Manukau\n d) Takanini\n\nEnter answer below: "
                     ,
-                "Question 5: What is the Maori word for food? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Whenua\n b) Waka\n c) Tane\n d) Kai\n\nEnter answer below: "};
+                "Question 5: What is the Maori word for food?\n\nPlease enter one of the options (by letter):\n a) Whenua\n b) Waka\n c) Tane\n d) Kai\n\nEnter answer below: "};
 
             //Creating arrays for easy answers.
             string[] easyAnswers = { "b", "c", "a", "b", "d" };
@@ -108,14 +107,14 @@ namespace Te_Reo_Maori_Quiz
                 }
                 else
                 {
-                    Console.WriteLine("\nIncorrect. Your points are currently: " + points);
+                    Console.WriteLine("\nIncorrect. The answer was " + easyAnswers[i] + "." + "\nYour points are currently: " + points);
                 }
                 Console.Write("\nPress any key to continue: ");
                 Console.ReadKey();
                 Console.Clear();
             } //End of for loop.
 
-            Console.WriteLine("Congratulations! You have successfully finished the medium level with " + points + "/5 points. \n\nPlease press r to restart the whole quiz, e to restart the easy level, m to go to the medium level, h to go to the hard level, or any other key to exit: ");
+            Console.WriteLine("Congratulations! You have finished the medium level with " + points + "/5 points. \n\nPlease press r to restart the whole quiz, e to restart the easy level, m to go to the medium level, h to go to the hard level, or any other key to exit: ");
 
             String endOfLevelChoice = Console.ReadLine().ToLower();
             if (endOfLevelChoice.Contains("r"))
@@ -151,18 +150,17 @@ namespace Te_Reo_Maori_Quiz
 
             //Welcoming the user to the level and displaying their starting points.
             Console.WriteLine("Welcome to the Medium level.");
-            Console.WriteLine("Your points are currently: " + points);
 
             //Creating an array for medium questions. 
-            string[] mediumQuestions = {"\nQuestion 1: What is the Maori phrase for good morning? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Pai\n b) Ngati tama\n c) Ata marie\n d) Kia ora\n\nEnter answer below: "
+            string[] mediumQuestions = {"\nQuestion 1: What is the Maori phrase for good morning?\n\nPlease enter one of the options (by letter):\n a) Pai\n b) Ngati tama\n c) Ata marie\n d) Kia ora\n\nEnter answer below: "
                     ,
-                "Question 2: What is the Maori word for tribe? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Patu\n b) Manu\n c) Iwi\n d) Harikoa\n\nEnter answer below: "
+                "Question 2: What is the Maori word for tribe?\n\nPlease enter one of the options (by letter):\n a) Patu\n b) Manu\n c) Iwi\n d) Harikoa\n\nEnter answer below: "
                     ,
-                "Question 3: What is the Maori word for school? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Kura\n b) Whakaute\n c) Marae\n d) Kao\n\nEnter answer below: "
+                "Question 3: What is the Maori word for school?\n\nPlease enter one of the options (by letter):\n a) Kura\n b) Whakaute\n c) Marae\n d) Kao\n\nEnter answer below: "
                     ,
-                "Question 4: What is the Maori name for Auckland? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Te Upoko o te Ika a Maui\n b) Ahau\n c) Riri\n d) Tamaki Makaurau\n\nEnter answer below: "
+                "Question 4: What is the Maori name for Auckland?\n\nPlease enter one of the options (by letter):\n a) Te Upoko o te Ika a Maui\n b) Ahau\n c) Riri\n d) Tamaki Makaurau\n\nEnter answer below: "
                     ,
-                "Question 5: What is the Maori word for land? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Kaimoana\n b) Whenua\n c) Whare\n d) Tepu\n\nEnter answer below: "
+                "Question 5: What is the Maori word for land? (Please enter a, b, c or d)\n\nPlease enter one of the options (by letter):\n a) Kaimoana\n b) Whenua\n c) Whare\n d) Tepu\n\nEnter answer below: "
             };
 
             //Creating arrays for medium answers.
@@ -188,14 +186,14 @@ namespace Te_Reo_Maori_Quiz
                 }
                 else
                 {
-                    Console.WriteLine("\nIncorrect. Your points are currently: " + points);
+                    Console.WriteLine("\nIncorrect. The answer was " + mediumAnswers[i] + "." + "\nYour points are currently: " + points);
                 }
                 Console.Write("\nPress any key to continue: ");
                 Console.ReadKey();
                 Console.Clear();
             } //End of for loop.
 
-            Console.WriteLine("Congratulations! You have successfully finished the medium level with " + points + "/5 points. \n\nPlease press r to restart the whole quiz, e to go to the easy level, m to restart the medium level, h to go to the hard level, or any other key to exit: "); 
+            Console.WriteLine("Congratulations! You have finished the medium level with " + points + "/5 points. \n\nPlease press r to restart the whole quiz, e to go to the easy level, m to restart the medium level, h to go to the hard level, or any other key to exit: "); 
 
             String endOfLevelChoice = Console.ReadLine().ToLower();
             if (endOfLevelChoice.Contains("r"))
@@ -229,18 +227,17 @@ namespace Te_Reo_Maori_Quiz
 
             //Welcoming the user to the level and displaying their starting points.
             Console.WriteLine("Welcome to the Hard level.");
-            Console.WriteLine("Your points are currently: " + points);
 
             //Creating an array for hard questions. 
-            string[] hardQuestions = {"\nQuestion 1: What is the Maori word for shirt? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Ataahua\n b) Hate\n c) Whakarihariha\n d) Tika\n\nEnter answer below: "
+            string[] hardQuestions = {"\nQuestion 1: What is the Maori word for shirt?\n\nPlease enter one of the options (by letter):\n a) Ataahua\n b) Hate\n c) Whakarihariha\n d) Tika\n\nEnter answer below: "
                     ,
-                "Question 2: What is the Maori word for shoe? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Hu\n b) Whitiki\n c) Turi\n d) Iti\n\nEnter answer below: "
+                "Question 2: What is the Maori word for shoe?\n\nPlease enter one of the options (by letter):\n a) Hu\n b) Whitiki\n c) Turi\n d) Iti\n\nEnter answer below: "
                     ,
-                "Question 3: What is the English word for kawe? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Tree\n b) Swallow\n c) Bring\n d) Grab\n\nEnter answer below: "
+                "Question 3: What is the English word for kawe?\n\nPlease enter one of the options (by letter):\n a) Tree\n b) Swallow\n c) Bring\n d) Grab\n\nEnter answer below: "
                     ,
-                "Question 4: What is the English word for katakata? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Happiness\n b) Laughter\n c) Dance\n d) Military\n\nEnter answer below: "
+                "Question 4: What is the English word for katakata?\n\nPlease enter one of the options (by letter):\n a) Happiness\n b) Laughter\n c) Dance\n d) Military\n\nEnter answer below: "
                     ,
-                "Question 5: What is the English word for rorohiko? (Please enter a, b, c or d)\n\nPlease enter one of the options:\n a) Headphones\n b) Door\n c) Pillar\n d) Computer\n\nEnter answer below: "
+                "Question 5: What is the English word for rorohiko?\n\nPlease enter one of the options (by letter):\n a) Headphones\n b) Door\n c) Pillar\n d) Computer\n\nEnter answer below: "
             };
 
             //Creating arrays for hard answers.
@@ -265,14 +262,14 @@ namespace Te_Reo_Maori_Quiz
                 }
                 else
                 {
-                    Console.WriteLine("\nIncorrect. Your points are currently: " + points);
+                    Console.WriteLine("\nIncorrect. The answer was " + hardAnswers[i] + "." + "\nYour points are currently: " + points);
                 }
                 Console.Write("\nPress any key to continue:");
                 Console.ReadKey();
                 Console.Clear();
             } //End of for loop.
 
-            Console.WriteLine("Congratulations! You have successfully finished the medium level with " + points + "/5 points. \n\nPlease press r to restart the whole quiz, e to go to the easy level, m to go to the medium level, h to restart the hard level, or any other key to exit: ");
+            Console.WriteLine("Congratulations! You have finished the medium level with " + points + "/5 points. \n\nPlease press r to restart the whole quiz, e to go to the easy level, m to go to the medium level, h to restart the hard level, or any other key to exit: ");
 
             String endOfLevelChoice = Console.ReadLine().ToLower();
             if (endOfLevelChoice.Contains("r"))
