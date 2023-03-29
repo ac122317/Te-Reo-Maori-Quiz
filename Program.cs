@@ -6,13 +6,12 @@ namespace Te_Reo_Maori_Quiz
 {
     internal class Program
     {
-        static int points = 0;//Rather than creating an integer called points in the playing method I decided to create it inside the class Program (globalising it), therefore I don't have to create parameters and reference points inside of the level methods.
         static void Main() //Beginning of main method.
         {
-            points = 0;
-            Playing();
+            int points = 0;
+            Playing(points);
 
-            static void Playing() //Beginning of playing Method.
+            static void Playing(int points) //Beginning of playing Method.
             {
                 points = 0;
 
@@ -41,19 +40,19 @@ namespace Te_Reo_Maori_Quiz
                     {
                         case "E":
                             Console.Clear();
-                            Level1();
+                            Level1(playerName, points);
                             valid = true;
                             break;
 
                         case "M":
                             Console.Clear();
-                            Level2();
+                            Level2(playerName, points);
                             valid = true;
                             break;
 
                         case "H":
                             Console.Clear();
-                            Level3();
+                            Level3(playerName, points);
                             valid = true;
                             break;
 
@@ -66,12 +65,12 @@ namespace Te_Reo_Maori_Quiz
             }
         } //End of playing method.
 
-        static void Level1()
+        static void Level1(string playerName, int points) //Beginning of Level1 method.
         {
             points = 0;
             
             //Welcoming the user to the level and displaying their starting points.
-            Console.WriteLine("Welcome to the Easy level.");
+            Console.WriteLine("Welcome to the Easy level " + playerName + ".");
 
             //Creating an array for easy questions.
             string[] easyQuestions = {"\nQuestion 1: What is the Maori word for white?\n\nPlease enter one of the options (by letter):\n a) Whero\n b) Ma\n c) Kikorangi\n d) Kowhai\n\nEnter answer below: "
@@ -100,7 +99,7 @@ namespace Te_Reo_Maori_Quiz
                     questionAnswer = Console.ReadLine().ToLower();
                 } //End of while loop.
 
-                if (questionAnswer == easyAnswers[i] || questionAnswer == easyAnswersWBracket[i])
+                if (questionAnswer.Contains(easyAnswers[i]) || questionAnswer.Contains (easyAnswersWBracket[i]))
                 {
                     points++;
                     Console.WriteLine("\nCorrect! Your points are currently: " + points);
@@ -125,17 +124,17 @@ namespace Te_Reo_Maori_Quiz
             else if (endOfLevelChoice.Contains("e"))
             {
                 Console.Clear();
-                Level1();
+                Level1(playerName, points);
             }
             else if (endOfLevelChoice.Contains("m"))
             {
                 Console.Clear();
-                Level2();
+                Level2(playerName, points);
             }
             else if (endOfLevelChoice.Contains("h"))
             {
                 Console.Clear();
-                Level3();
+                Level3(playerName, points);
             }
             else
             {
@@ -144,12 +143,12 @@ namespace Te_Reo_Maori_Quiz
 
         }//End of level1 method.
 
-        static void Level2()
+        static void Level2(string playerName, int points) //Beginning of Level2 method.
         {
             points = 0;
 
             //Welcoming the user to the level and displaying their starting points.
-            Console.WriteLine("Welcome to the Medium level.");
+            Console.WriteLine("Welcome to the Medium level " + playerName + ".");
 
             //Creating an array for medium questions. 
             string[] mediumQuestions = {"\nQuestion 1: What is the Maori phrase for good morning?\n\nPlease enter one of the options (by letter):\n a) Pai\n b) Ngati tama\n c) Ata marie\n d) Kia ora\n\nEnter answer below: "
@@ -179,7 +178,7 @@ namespace Te_Reo_Maori_Quiz
                     questionAnswer = Console.ReadLine().ToLower();
                 } //End of while loop.
 
-                if (questionAnswer == mediumAnswers[i] || questionAnswer == mediumAnswersWBracket[i])
+                if (questionAnswer.Contains(mediumAnswers[i]) || questionAnswer.Contains(mediumAnswersWBracket[i]))
                 {
                     points++;
                     Console.WriteLine("\nCorrect! Your points are currently: " + points);
@@ -204,29 +203,29 @@ namespace Te_Reo_Maori_Quiz
             else if (endOfLevelChoice.Contains("e"))
             {
                 Console.Clear();
-                Level1();
+                Level1(playerName, points);
             }
             else if (endOfLevelChoice.Contains("m"))
             {
                 Console.Clear();
-                Level2();
+                Level2(playerName, points);
             }
             else if (endOfLevelChoice.Contains("h"))
             {
                 Console.Clear();
-                Level3();
+                Level3(playerName, points);
             }
             else
             {
                 Console.WriteLine("Thank you for playing my Te Reo Maori Quiz!");
             }
         } //End of level2 method.
-        static void Level3()
+        static void Level3(string playerName, int points) //Beginning of Level3 method.
         {
             points = 0;
 
             //Welcoming the user to the level and displaying their starting points.
-            Console.WriteLine("Welcome to the Hard level.");
+            Console.WriteLine("Welcome to the Hard level " + playerName + ".");
 
             //Creating an array for hard questions. 
             string[] hardQuestions = {"\nQuestion 1: What is the Maori word for shirt?\n\nPlease enter one of the options (by letter):\n a) Ataahua\n b) Hate\n c) Whakarihariha\n d) Tika\n\nEnter answer below: "
@@ -255,7 +254,7 @@ namespace Te_Reo_Maori_Quiz
                     questionAnswer = Console.ReadLine().ToLower();
                 } //End of while loop.
 
-                if (questionAnswer == hardAnswers[i] || questionAnswer == hardAnswersWBracket[i])
+                if (questionAnswer.Contains(hardAnswers[i]) || questionAnswer.Contains(hardAnswersWBracket[i]))
                 {
                     points++;
                     Console.WriteLine("\nCorrect! Your points are currently: " + points);
@@ -280,17 +279,17 @@ namespace Te_Reo_Maori_Quiz
             else if (endOfLevelChoice.Contains("e"))
             {
                 Console.Clear();
-                Level1();
+                Level1(playerName, points);
             }
             else if (endOfLevelChoice.Contains("m"))
             {
                 Console.Clear();
-                Level2();
+                Level2(playerName, points);
             }
             else if (endOfLevelChoice.Contains("h"))
             {
                 Console.Clear();
-                Level3();
+                Level3(playerName, points);
             }
             else
             {
