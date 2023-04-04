@@ -8,12 +8,11 @@ namespace Te_Reo_Maori_Quiz
     {
         static void Main() //Beginning of main method.
         {
-            int points = 0;
-            Playing(points);
+            Playing();
         }
-        static void Playing(int points) //Beginning of playing Method.
+        static void Playing() //Beginning of playing Method.
         {
-            points = 0;
+            int points = 0;
 
             String playerName, selectedLevel;
             bool validChoice;
