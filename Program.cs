@@ -8,10 +8,6 @@ namespace Te_Reo_Maori_Quiz
     {
         static void Main() //Beginning of main method.
         {
-            Playing();
-        } //End of main method.
-        static void Playing() //Beginning of playing Method.
-        {
             int points = 0;
 
             String playerName, selectedLevel;
@@ -61,7 +57,7 @@ namespace Te_Reo_Maori_Quiz
                         break;
                 }
             } while (validChoice != true); //While loop allows the do loop to repeat when the user doesn't enter one of the accepted cases in the switch.
-        } //End of playing method.
+        } //End of main method.
 
         static void Level1(string playerName, int points) //Beginning of Level1 method.
         {
@@ -113,32 +109,8 @@ namespace Te_Reo_Maori_Quiz
 
             Console.WriteLine("Congratulations! You have finished the medium level with " + points + "/5 points. \n\nPlease press r to restart the whole quiz, e to restart the easy level, m to go to the medium level, h to go to the hard level, or any other key to exit: "); //Congratulates and shows the user their final points and prompts themm to make a selection on what to do after finishing the level.
 
-            //The following code determines what happens next in the quiz after finishing the level based on uesr input.
-            String endOfLevelChoice = Console.ReadLine().ToLower();
-            if (endOfLevelChoice.Equals("r"))
-            {
-                Console.Clear();
-                Main();
-            }
-            else if (endOfLevelChoice.Equals("e"))
-            {
-                Console.Clear();
-                Level1(playerName, points);
-            }
-            else if (endOfLevelChoice.Equals("m"))
-            {
-                Console.Clear();
-                Level2(playerName, points);
-            }
-            else if (endOfLevelChoice.Equals("h"))
-            {
-                Console.Clear();
-                Level3(playerName, points);
-            }
-            else
-            {
-                Console.WriteLine("Thank you for playing my Te Reo Maori Quiz!");
-            }
+            EndLevelChoice(points, playerName);
+
         }//End of level1 method.
 
         static void Level2(string playerName, int points) //Beginning of Level2 method.
@@ -192,32 +164,8 @@ namespace Te_Reo_Maori_Quiz
 
             Console.WriteLine("Congratulations! You have finished the medium level with " + points + "/5 points. \n\nPlease press r to restart the whole quiz, e to go to the easy level, m to restart the medium level, h to go to the hard level, or any other key to exit: "); //Congratulates and shows the user their final points and prompts themm to make a selection on what to do after finishing the level.
 
-            //The following code determines what happens next in the quiz after finishing the level based on uesr input.
-            String endOfLevelChoice = Console.ReadLine().ToLower();
-            if (endOfLevelChoice.Equals("r"))
-            {
-                Console.Clear();
-                Main();
-            }
-            else if (endOfLevelChoice.Equals("e"))
-            {
-                Console.Clear();
-                Level1(playerName, points);
-            }
-            else if (endOfLevelChoice.Equals("m"))
-            {
-                Console.Clear();
-                Level2(playerName, points);
-            }
-            else if (endOfLevelChoice.Equals("h"))
-            {
-                Console.Clear();
-                Level3(playerName, points);
-            }
-            else
-            {
-                Console.WriteLine("Thank you for playing my Te Reo Maori Quiz!");
-            }
+            EndLevelChoice(points, playerName);
+            
         } //End of level2 method.
         static void Level3(string playerName, int points) //Beginning of Level3 method.
         {
@@ -270,7 +218,12 @@ namespace Te_Reo_Maori_Quiz
 
             Console.WriteLine("Congratulations! You have finished the medium level with " + points + "/5 points. \n\nPlease press r to restart the whole quiz, e to go to the easy level, m to go to the medium level, h to restart the hard level, or any other key to exit: "); //Congratulates and shows the user their final points and prompts themm to make a selection on what to do after finishing the level.
 
-            //The following code determines what happens next in the quiz after finishing the level based on uesr input.
+            EndLevelChoice(points, playerName);
+            
+        } //End of level3 method.
+
+        static void EndLevelChoice(int points, string playerName) //This method determines what happens next in the quiz after finishing the level based on uesr input.
+        {
             String endOfLevelChoice = Console.ReadLine().ToLower();
             if (endOfLevelChoice.Equals("r"))
             {
@@ -296,6 +249,6 @@ namespace Te_Reo_Maori_Quiz
             {
                 Console.WriteLine("Thank you for playing my Te Reo Maori Quiz" + playerName + "!");
             }
-        } //End of level3 method.
+        }
     } //End of Program class.
 } //End of Te_Reo_Maori_Quiz namespace.
