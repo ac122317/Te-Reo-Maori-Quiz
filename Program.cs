@@ -249,6 +249,6 @@ namespace Te_Reo_Maori_Quiz
             {
                 Console.WriteLine("Thank you for playing my Te Reo Maori Quiz" + playerName + "!");
             }
-        }
+        }//End of EndLevelChoice method.
     } //End of Program class.
 } //End of Te_Reo_Maori_Quiz namespace.
