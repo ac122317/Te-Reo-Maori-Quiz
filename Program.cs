@@ -149,18 +149,27 @@ namespace Te_Reo_Maori_Quiz
         static void QandA (string[] questions, string[] answers, string level)
         {
             int points = 0;
+            bool validAnswer;
 
             for (int i = 0; i < questions.Length; i++) //Beginning of for loop.
             {
                 Console.WriteLine(questions[i]);
                 String questionAnswer = Console.ReadLine().ToLower();
 
-                while (string.IsNullOrEmpty(questionAnswer)) //Beginning of while loop, checks if user enters nothing.
+                do //Beginning of do while loop, ensures the user enters a, b, c, or d as their answer.
                 {
-                    Console.Write("Please enter an answer: ");
-                    questionAnswer = Console.ReadLine().ToLower();
-                } //End of while loop.
-
+                    if (!questionAnswer.Equals("a") && !questionAnswer.Equals("b") && !questionAnswer.Equals("c") && !questionAnswer.Equals("d"))
+                    {
+                        Console.WriteLine("Please enter one of the options: a, b, c or d");
+                        validAnswer = false;
+                        questionAnswer = Console.ReadLine().ToLower();
+                    }
+                    else
+                    {
+                        validAnswer = true;
+                    }
+                } while (validAnswer != true); //End of do while loop.
+                
                 if (questionAnswer.Equals(answers[i]))
                 {
                     points++;
@@ -175,7 +184,7 @@ namespace Te_Reo_Maori_Quiz
                 Console.Clear();
             } //End of for loop.
 
-            Console.WriteLine("Congratulations! You have finished the" + level + "level with " + points + "/5 points. \n\nPlease press r to restart the whole quiz, e to restart the easy level, m to go to the medium level, h to go to the hard level, or any other key to exit: "); //Congratulates and shows the user their final points and prompts themm to make a selection on what to do after finishing the level.
+            Console.WriteLine("Congratulations! You have finished the " + level + " level with " + points + "/5 points. \n\nPlease press r to restart the whole quiz, e to restart the easy level, m to go to the medium level, h to go to the hard level, or any other key to exit: "); //Congratulates and shows the user their final points and prompts themm to make a selection on what to do after finishing the level.
         }
 
         static void EndLevelChoice(int points, string playerName) //This method determines what happens next in the quiz after finishing the level based on uesr input.
