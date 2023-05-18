@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics.Metrics;
 using System.Numerics;
+using System.Reflection.Emit;
 
 namespace Te_Reo_Maori_Quiz
 {
@@ -8,64 +9,6 @@ namespace Te_Reo_Maori_Quiz
     {
         static void Main() //Beginning of main method.
         {
-            int points = 0;
-
-            String playerName, selectedLevel;
-            bool validChoice;
-
-            //Welcoming the user and asking for their name.
-            Console.WriteLine("\t\t\tWelcome to my Te Reo Maori Quiz.\nThis is a multiple choice quiz with three different levels, Easy, Medium and Hard. Each level will have 5 different questions and for each correct question you will be awarded 1 point. Good luck!");
-            Console.Write("\nPlease enter your name to begin: ");
-
-            playerName = Console.ReadLine(); //Assigning user input to playerName variable.
-            while (string.IsNullOrEmpty(playerName)) //Beginning of while loop to see if user inputs at least 1 character.
-            {
-                Console.Write("Please enter a name with at least 1 character: ");
-                playerName = Console.ReadLine();
-            } //End of while loop.
-
-            Console.WriteLine("\nHello " + playerName + ", please choose your level: Easy (type E), Medium (type M) or Hard (type H).");
-            Console.Write("\nPlease enter your choice here: "); //Asking which level user wants to play.
-
-            do //Beginning of do loop.
-            {
-                selectedLevel = Console.ReadLine().ToUpper(); //Reads user input, converts to uppercase and assigns to variable selectedLevel.
-
-                switch (selectedLevel) //This switch checks if the user inputs a valid level choice. If so, will be taken to level by calling the corresponding method. Otherwise, error message is displayed.
-                {
-                    case "E":
-                        Console.Clear();
-                        Level1(playerName, points);
-                        validChoice = true;
-                        break;
-
-                    case "M":
-                        Console.Clear();
-                        Level2(playerName, points);
-                        validChoice = true;
-                        break;
-
-                    case "H":
-                        Console.Clear();
-                        Level3(playerName, points);
-                        validChoice = true;
-                        break;
-
-                    default:
-                        Console.Write("Please enter a valid level: ");
-                        validChoice = false;
-                        break;
-                }
-            } while (validChoice != true); //While loop allows the do loop to repeat when the user doesn't enter one of the accepted cases in the switch.
-        } //End of main method.
-
-        static void Level1(string playerName, int points) //Beginning of Level1 method.
-        {
-            points = 0;
-
-            //Welcoming the user to the level.
-            Console.WriteLine("Welcome to the Easy level " + playerName + ".");
-
             //Creating an array for easy questions.
             string[] easyQuestions = {"\nQuestion 1: What is the Maori word for white?\n\nPlease enter one of the options (by letter):\n a) Whero\n b) Ma\n c) Kikorangi\n d) Kowhai\n\nEnter answer below: "
                     ,
@@ -79,21 +22,6 @@ namespace Te_Reo_Maori_Quiz
 
             //Creating arrays for easy answers.
             string[] easyAnswers = { "b", "c", "a", "b", "d" };
-
-            //Using a for loop to display each question to the user and taking their answer, if input is a correct answer, points increment by 1.
-
-            QandA(easyQuestions, easyAnswers, "easy");
-
-            EndLevelChoice(points, playerName);
-
-        }//End of level1 method.
-
-        static void Level2(string playerName, int points) //Beginning of Level2 method.
-        {
-            points = 0;
-
-            //Welcoming the user to the level.
-            Console.WriteLine("Welcome to the Medium level " + playerName + ".");
 
             //Creating an array for medium questions. 
             string[] mediumQuestions = {"\nQuestion 1: What is the Maori phrase for good morning?\n\nPlease enter one of the options (by letter):\n a) Pai\n b) Ngati tama\n c) Ata marie\n d) Kia ora\n\nEnter answer below: "
@@ -110,19 +38,6 @@ namespace Te_Reo_Maori_Quiz
             //Creating arrays for medium answers.
             string[] mediumAnswers = { "c", "c", "a", "d", "b" };
 
-            //Using a for loop to display each question to the user and taking their answer, if input is a correct answer, points increment by 1.
-
-            QandA(mediumAnswers, mediumQuestions, "medium");
-
-            EndLevelChoice(points, playerName);
-            
-        } //End of level2 method.
-        static void Level3(string playerName, int points) //Beginning of Level3 method.
-        {
-
-            //Welcoming the user to the level.
-            Console.WriteLine("Welcome to the Hard level " + playerName + ".");
-
             //Creating an array for hard questions. 
             string[] hardQuestions = {"\nQuestion 1: What is the Maori word for shirt?\n\nPlease enter one of the options (by letter):\n a) Ataahua\n b) Hate\n c) Whakarihariha\n d) Tika\n\nEnter answer below: "
                     ,
@@ -138,19 +53,69 @@ namespace Te_Reo_Maori_Quiz
             //Creating arrays for hard answers.
             string[] hardAnswers = { "b", "a", "c", "b", "d" };
 
-            //Using a for loop to display each question to the user and taking their answer, if input is a correct answer, points increment by 1.
+            int points = 0;
 
-            QandA(hardQuestions, hardAnswers, "hard");
+            String playerName, selectedLevel;
+            bool validChoice;
+            bool redo;
 
-            EndLevelChoice(points, playerName);
-            
-        } //End of level3 method.
+            //Welcoming the user and asking for their name.
+            Console.WriteLine("\t\t\tWelcome to my Te Reo Maori Quiz.\nThis is a multiple choice quiz with three different levels, Easy, Medium and Hard. Each level will have 5 different questions and for each correct question you will be awarded 1 point. Good luck!");
+            Console.Write("\nPlease enter your name to begin: ");
 
-        static void QandA (string[] questions, string[] answers, string level)
+            playerName = Console.ReadLine(); //Assigning user input to playerName variable.
+            while (string.IsNullOrEmpty(playerName)) //Beginning of while loop to see if user inputs at least 1 character.
+            {
+                Console.Write("Please enter a name with at least 1 character: ");
+                playerName = Console.ReadLine();
+            } //End of while loop.
+
+            do //Beginning of 1st do loop.
+            {
+                Console.WriteLine("\n" + playerName + ", please select the level you would like to play: Easy (type E), Medium (type M) or Hard (type H).");
+                Console.Write("\nPlease enter your choice here: "); //Asking which level user wants to play.
+
+                do //Beginning of 2nd do loop.
+                {
+                    selectedLevel = Console.ReadLine().ToUpper(); //Reads user input, converts to uppercase and assigns to variable selectedLevel.
+
+                    switch (selectedLevel) //This switch checks if the user inputs a valid level choice. If so, will be taken to level by calling the corresponding method. Otherwise, error message is displayed.
+                    {
+                        case "E":
+                            Console.Clear();
+                            points = QandA(easyQuestions, easyAnswers, "easy", playerName);
+                            validChoice = true;
+                            break;
+
+                        case "M":
+                            Console.Clear();
+                            points = QandA(mediumQuestions, mediumAnswers, "medium", playerName);
+                            validChoice = true;
+                            break;
+
+                        case "H":
+                            Console.Clear();
+                            points = QandA(hardQuestions, hardAnswers, "hard", playerName);
+                            validChoice = true;
+                            break;
+
+                        default:
+                            Console.Write("Please enter a valid level: ");
+                            validChoice = false;
+                            break;
+                    }
+                } while (validChoice != true); //While loop allows the do loop to repeat when the user doesn't enter one of the accepted cases in the switch.
+            } while (redo = RedoQuiz(playerName, points));
+
+            Console.WriteLine("Thank you for playing my Te Reo Maori Quiz " +playerName+ ", I hoped you enjoyed it and learnt more about the Maori culture!");
+        } //End of main method.
+
+        static int QandA(string[] questions, string[] answers, string level, string playerName) //Beginning of QandA method.
         {
             int points = 0;
             bool validAnswer;
 
+            Console.WriteLine("Welcome to the " + level + " level " + playerName + "!");
             for (int i = 0; i < questions.Length; i++) //Beginning of for loop.
             {
                 Console.WriteLine(questions[i]);
@@ -160,7 +125,7 @@ namespace Te_Reo_Maori_Quiz
                 {
                     if (!questionAnswer.Equals("a") && !questionAnswer.Equals("b") && !questionAnswer.Equals("c") && !questionAnswer.Equals("d"))
                     {
-                        Console.WriteLine("Please enter one of the options: a, b, c or d");
+                        Console.WriteLine("Please enter one of the options (a, b, c or d): ");
                         validAnswer = false;
                         questionAnswer = Console.ReadLine().ToLower();
                     }
@@ -169,7 +134,7 @@ namespace Te_Reo_Maori_Quiz
                         validAnswer = true;
                     }
                 } while (validAnswer != true); //End of do while loop.
-                
+
                 if (questionAnswer.Equals(answers[i]))
                 {
                     points++;
@@ -184,36 +149,39 @@ namespace Te_Reo_Maori_Quiz
                 Console.Clear();
             } //End of for loop.
 
-            Console.WriteLine("Congratulations! You have finished the " + level + " level with " + points + "/5 points. \n\nPlease press r to restart the whole quiz, e to restart the easy level, m to go to the medium level, h to go to the hard level, or any other key to exit: "); //Congratulates and shows the user their final points and prompts themm to make a selection on what to do after finishing the level.
-        }
-
-        static void EndLevelChoice(int points, string playerName) //This method determines what happens next in the quiz after finishing the level based on uesr input.
+            return points;
+        } //End of QandA method.
+        static bool RedoQuiz(string playerName, int points) //Beginning of RedoQuiz method.
         {
-            String endOfLevelChoice = Console.ReadLine().ToLower();
-            if (endOfLevelChoice.Equals("r"))
+            bool validSelection;
+
+            Console.WriteLine("Congratulations " + playerName + "!" + " You have finished the level with " + points + "/5 points."); //Congratulates the user on finishing the level and displays their points.
+            Console.WriteLine("Would you like to play another level? (Y/N): ");
+
+            string selection = Console.ReadLine().ToUpper();
+
+            do //Beginning of do while loop, ensures the user enters Y or N.
             {
-                Console.Clear();
-                Main();
-            }
-            else if (endOfLevelChoice.Equals("e"))
+                if (!selection.Equals("Y") && !selection.Equals("N") )
+                {
+                    Console.WriteLine("Please type Y or N");
+                    validSelection = false;
+                    selection = Console.ReadLine().ToUpper();
+                }
+                else
+                {
+                    validSelection = true;
+                }
+            } while (validSelection != true); //End of do while loop.
+
+            if (selection.Equals("Y"))
             {
-                Console.Clear();
-                Level1(playerName, points);
-            }
-            else if (endOfLevelChoice.Equals("m"))
-            {
-                Console.Clear();
-                Level2(playerName, points);
-            }
-            else if (endOfLevelChoice.Equals("h"))
-            {
-                Console.Clear();
-                Level3(playerName, points);
+                return true;
             }
             else
             {
-                Console.WriteLine("Thank you for playing my Te Reo Maori Quiz" + playerName + "!");
+                return false;
             }
-        }//End of EndLevelChoice method.
+        } //End of RedoQuiz method.
     } //End of Program class.
 } //End of Te_Reo_Maori_Quiz namespace.
