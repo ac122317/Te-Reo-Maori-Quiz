@@ -75,27 +75,27 @@ namespace Te_Reo_Maori_Quiz
                 Console.WriteLine("\n" + playerName + ", please select the level you would like to play: Easy (type E), Medium (type M) or Hard (type H).");
                 Console.Write("\nPlease enter your choice here: "); //Asking which level user wants to play.
 
-                do //Beginning of 2nd do loop.
+                do //Beginning of 2nd do loop, where users input goes through a switch to determine what level is chosen.
                 {
                     selectedLevel = Console.ReadLine().ToUpper(); //Reads user input, converts to uppercase and assigns to variable selectedLevel.
 
-                    switch (selectedLevel) //This switch checks if the user inputs a valid level choice. If so, will be taken to level by calling the corresponding method. Otherwise, error message is displayed.
+                    switch (selectedLevel) //This switch checks if the user inputs a valid level choice. If so, will be taken to level by parsing through the necessary variables to the QandA method. If E, M, or H aren't chosen, error message is displayed and loops back.
                     {
                         case "E":
                             Console.Clear();
-                            points = QandA(easyQuestions, easyAnswers, "easy", playerName);
+                            points = QandA(easyQuestions, easyAnswers, "easy", playerName); 
                             validChoice = true;
                             break;
 
                         case "M":
                             Console.Clear();
-                            points = QandA(mediumQuestions, mediumAnswers, "medium", playerName);
+                            points = QandA(mediumQuestions, mediumAnswers, "medium", playerName); //Calls the QandA method and parses through the necessary variables for medium level.
                             validChoice = true;
                             break;
 
                         case "H":
                             Console.Clear();
-                            points = QandA(hardQuestions, hardAnswers, "hard", playerName);
+                            points = QandA(hardQuestions, hardAnswers, "hard", playerName); //Calls the QandA method and parses through the necessary variables for hard level.
                             validChoice = true;
                             break;
 
@@ -104,10 +104,10 @@ namespace Te_Reo_Maori_Quiz
                             validChoice = false;
                             break;
                     }
-                } while (validChoice != true); //While loop allows the do loop to repeat when the user doesn't enter one of the accepted cases in the switch.
-            } while (redo = RedoQuiz(playerName, points));
+                } while (validChoice != true); //This while loop allows the do loop to repeat when the user doesn't enter one of the accepted cases in the switch.
+            } while (redo = RedoQuiz(playerName, points)); //This while loop allows the level selection part of the quiz to repeat again, if the user says they would like to play another level in the RedoQuiz method.
 
-            Console.WriteLine("Thank you for playing my Te Reo Maori Quiz " +playerName+ ", I hoped you enjoyed it and learnt more about the Maori culture!");
+            Console.WriteLine("\nThank you for playing my Te Reo Maori Quiz " +playerName+ ", I hoped you enjoyed it and learnt more about the Maori culture!"); //End message after the user says they do not want to do another level.
         } //End of main method.
 
         static int QandA(string[] questions, string[] answers, string level, string playerName) //Beginning of QandA method.
@@ -164,7 +164,7 @@ namespace Te_Reo_Maori_Quiz
             {
                 if (!selection.Equals("Y") && !selection.Equals("N") )
                 {
-                    Console.WriteLine("Please type Y or N");
+                    Console.WriteLine("Please type Y or N:");
                     validSelection = false;
                     selection = Console.ReadLine().ToUpper();
                 }
