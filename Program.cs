@@ -57,8 +57,7 @@ namespace Te_Reo_Maori_Quiz
 
             String playerName, selectedLevel;
             bool validChoice;
-            bool redo;
-
+          
             //Welcoming the user and asking for their name.
             Console.WriteLine("\t\t\tWelcome to my Te Reo Maori Quiz.\nThis is a multiple choice quiz with three different levels, Easy, Medium and Hard. Each level will have 5 different questions and for each correct question you will be awarded 1 point. Good luck!");
             Console.Write("\nPlease enter your name to begin: ");
@@ -83,7 +82,7 @@ namespace Te_Reo_Maori_Quiz
                     {
                         case "E":
                             Console.Clear();
-                            points = QandA(easyQuestions, easyAnswers, "easy", playerName);
+                            points = QandA(easyQuestions, easyAnswers, "easy", playerName); //Calls the QandA method and parses through the necessary variables for easy level.
                             validChoice = true;
                             break;
 
@@ -105,7 +104,7 @@ namespace Te_Reo_Maori_Quiz
                             break;
                     }
                 } while (validChoice != true); //This while loop allows the do loop to repeat when the user doesn't enter one of the accepted cases in the switch.
-            } while (redo = RedoQuiz(playerName, points)); //This while loop allows the level selection part of the quiz to repeat again, if the user says they would like to play another level in the RedoQuiz method.
+            } while (RedoQuiz(playerName, points)); //This while loop allows the level selection part of the quiz to repeat again, if the user says they would like to play another level in the RedoQuiz method.
 
             Console.WriteLine("\nThank you for playing my Te Reo Maori Quiz " + playerName + ", I hoped you enjoyed it and learnt more about the Maori culture!"); //End message after the user says they do not want to do another level.
         } //End of main method.
