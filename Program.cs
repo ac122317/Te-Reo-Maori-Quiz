@@ -152,8 +152,6 @@ namespace Te_Reo_Maori_Quiz
         } //End of QandA method.
         static bool RedoQuiz(string playerName, int points) //Beginning of RedoQuiz method.
         {
-            bool validSelection;
-
             Console.WriteLine("Congratulations " + playerName + "!" + " You have finished the level with " + points + "/5 points."); //Congratulates the user on finishing the level and displays their points.
             Console.WriteLine("Would you like to play another level? (Y/N): ");
 
