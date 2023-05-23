@@ -57,7 +57,7 @@ namespace Te_Reo_Maori_Quiz
 
             String playerName, selectedLevel;
             bool validChoice;
-          
+
             //Welcoming the user and asking for their name.
             Console.WriteLine("\t\t\tWelcome to my Te Reo Maori Quiz.\nThis is a multiple choice quiz with three different levels, Easy, Medium and Hard. Each level will have 5 different questions and for each correct question you will be awarded 1 point. Good luck!");
             Console.Write("\nPlease enter your name to begin: ");
@@ -159,19 +159,11 @@ namespace Te_Reo_Maori_Quiz
 
             string selection = Console.ReadLine().ToUpper();
 
-            do //Beginning of do while loop, ensures the user enters Y or N.
+            while (!selection.Equals("Y") && !selection.Equals("N"))
             {
-                if (!selection.Equals("Y") && !selection.Equals("N"))
-                {
-                    Console.WriteLine("Please type Y or N:");
-                    validSelection = false;
-                    selection = Console.ReadLine().ToUpper();
-                }
-                else
-                {
-                    validSelection = true;
-                }
-            } while (validSelection != true); //End of do while loop.
+                Console.WriteLine("Please type Y or N:");
+                selection = Console.ReadLine().ToUpper();
+            }
 
             if (selection.Equals("Y"))
             {
