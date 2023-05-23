@@ -126,7 +126,6 @@ namespace Te_Reo_Maori_Quiz
         static int QandA(string[] questions, string[] answers, string level, string playerName) //Beginning of QandA method.
         {
             int points = 0;
-            bool validAnswer;
 
             Console.WriteLine("Welcome to the " + level + " level " + playerName + "!");
             for (int i = 0; i < questions.Length; i++) //Beginning of for loop where the questions and answers are processed.
