@@ -64,7 +64,7 @@ namespace Te_Reo_Maori_Quiz
             Console.Write("\nPlease enter your name to begin: ");
             
             playerName = Console.ReadLine(); //Assigning user input to playerName variable.
-            while (string.IsNullOrEmpty(playerName) || playerName.Length > MAXNAMELENGTH) //Beginning of while loop to ensure user inputs at least 1 character for name and below 30 characters.
+            while (string.IsNullOrEmpty(playerName) || playerName.Length > MAXNAMELENGTH) //Beginning of while loop to ensure user inputs at least 1 character for name and a maximum of 30 characters.
             {
                 Console.Write("Please enter a name with at least 1 character and a maximum of 30 characters: ");
                 playerName = Console.ReadLine();
