@@ -56,16 +56,17 @@ namespace Te_Reo_Maori_Quiz
             //Declaring necessary variables.
             int points = 0;
             String playerName, selectedLevel;
-            bool newLevel;
+            bool newLevel = false;
+            const int MAXNAMELENGTH = 30;
 
             //Welcoming the user and asking for their name.
             Console.WriteLine("\t\t\tWelcome to my Te Reo Maori Quiz.\nThis is a multiple choice quiz with three different levels, Easy, Medium and Hard. Each level will have 5 different questions and for each correct question you will be awarded 1 point. Good luck!");
             Console.Write("\nPlease enter your name to begin: ");
-
+            
             playerName = Console.ReadLine(); //Assigning user input to playerName variable.
-            while (string.IsNullOrEmpty(playerName)) //Beginning of while loop to ensure user inputs at least 1 character for name.
+            while (string.IsNullOrEmpty(playerName) || playerName.Length > MAXNAMELENGTH) //Beginning of while loop to ensure user inputs at least 1 character for name and below 30 characters.
             {
-                Console.Write("Please enter a name with at least 1 character: ");
+                Console.Write("Please enter a name with at least 1 character and below 30 characters: ");
                 playerName = Console.ReadLine();
             } //End of while loop.
 
@@ -73,9 +74,9 @@ namespace Te_Reo_Maori_Quiz
             {
                 Console.WriteLine("\n" + playerName + ", please select the level you would like to play: Easy (type E), Medium (type M) or Hard (type H).");
                 Console.Write("\nPlease enter your choice here: "); //Asking which level user wants to play.
-
+               
                 selectedLevel = Console.ReadLine().ToUpper(); //Reads user input, converts to uppercase and assigns to variable selectedLevel.
-
+                    
                 while (selectedLevel != "E" && selectedLevel != "M" && selectedLevel != "H") //Beginning of while loop to ensure user selects a valid level.
                 {
                     Console.Write("\nPlease enter a valid level: ");
@@ -113,10 +114,6 @@ namespace Te_Reo_Maori_Quiz
                 if (endLevelSelection.Equals("Y"))
                 {
                     newLevel = true;
-                }
-                else
-                {
-                    newLevel = false;
                 }
             } while (newLevel != false); //This while loop allows another level to be chosen if the user selects yes.
 
