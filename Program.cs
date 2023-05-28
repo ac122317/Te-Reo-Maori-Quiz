@@ -72,6 +72,7 @@ namespace Te_Reo_Maori_Quiz
 
             do //Beginning of the do loop where most of the non-array coding in the main method takes place.
             {
+                newLevel = false;
                 Console.WriteLine("\n" + playerName + ", please select the level you would like to play: Easy (type E), Medium (type M) or Hard (type H).");
                 Console.Write("\nPlease enter your choice here: "); //Asking which level user wants to play.
                
