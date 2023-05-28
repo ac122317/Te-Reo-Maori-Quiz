@@ -56,7 +56,7 @@ namespace Te_Reo_Maori_Quiz
             //Declaring necessary variables.
             int points = 0;
             String playerName, selectedLevel;
-            bool newLevel = false;
+            bool newLevel;
             const int MAXNAMELENGTH = 30;
 
             //Welcoming the user and asking for their name.
